@@ -1,0 +1,170 @@
+package com.pursuit.handy_helper_app;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+
+
+public class SignUpFragment extends Fragment {
+    private static final String SHARED_PREFS_KEY = "sharedPrefs";
+    private EditText usernameEditText;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private EditText passwordConfirmEditText;
+    private CheckBox checkBox;
+    private Button signUpButton;
+    private SharedPreferences signUp;
+    private static FragmentInterface fragmentInterface;
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM_USER_CHOICE = "username";
+    private static final String ARG_PARAM_EMAIL_INPUT = "email";
+    private static final String ARG_PARAM_PASSWORD_CHOICE = "password";
+    private static final String ARG_PARAM_PASSWORD_CHOICE_CONFIRM = "passwordConfirm";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+    private String mParam3;
+    private String mParam4;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        signUp = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
+
+        if (signUp.getBoolean("isChecked", false)) {
+            usernameEditText.setText(signUp.getString("username", null));
+            emailEditText.setText(signUp.getString("email", null));
+            passwordEditText.setText(signUp.getString("password", null));
+            passwordConfirmEditText.setText(signUp.getString("passwordConfirm", null));
+            checkBox.setChecked(signUp.getBoolean("isChecked", false));
+        }
+
+
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM_USER_CHOICE);
+            mParam2 = getArguments().getString(ARG_PARAM_EMAIL_INPUT);
+            mParam3 = getArguments().getString(ARG_PARAM_PASSWORD_CHOICE);
+            mParam4 = getArguments().getString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM);
+        }
+    }
+
+    public String getmParam4() {
+        return mParam4;
+    }
+
+    public void setmParam4(String mParam4) {
+        this.mParam4 = mParam4;
+    }
+
+    public SignUpFragment() {
+
+    }
+
+    public static String getArgParamUserChoice() {
+        return ARG_PARAM_USER_CHOICE;
+    }
+
+    public static String getArgParamEmailInput() {
+        return ARG_PARAM_EMAIL_INPUT;
+    }
+
+    public static String getArgParamPasswordChoice() {
+        return ARG_PARAM_PASSWORD_CHOICE;
+    }
+
+    public String getmParam1() {
+        return mParam1;
+    }
+
+    public static String getArgParamPasswordChoiceConfirm() {
+        return ARG_PARAM_PASSWORD_CHOICE_CONFIRM;
+    }
+
+    public void setmParam1(String mParam1) {
+        this.mParam1 = mParam1;
+    }
+
+    public String getmParam2() {
+        return mParam2;
+    }
+
+    public void setmParam2(String mParam2) {
+        this.mParam2 = mParam2;
+    }
+
+    public String getmParam3() {
+        return mParam3;
+    }
+
+    public void setmParam3(String mParam3) {
+        this.mParam3 = mParam3;
+    }
+
+    public static SignUpFragment newInstance(String username, String email, String password, String passwordConfirm, FragmentInterface fraginterface) {
+        SignUpFragment fragment = new SignUpFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM_USER_CHOICE, username);
+        args.putString(ARG_PARAM_EMAIL_INPUT, email);
+        args.putString(ARG_PARAM_PASSWORD_CHOICE, password);
+        args.putString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM, passwordConfirm);
+        fragmentInterface = fraginterface;
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        usernameEditText = view.findViewById(R.id.editText_username);
+        emailEditText = view.findViewById(R.id.editText_email);
+        passwordEditText = view.findViewById(R.id.editText_password);
+        passwordConfirmEditText = view.findViewById(R.id.editText_password_confirm);
+        checkBox = view.findViewById(R.id.remember_me_checkbox);
+        signUpButton = view.findViewById(R.id.sign_up_button);
+
+        usernameEditText.setText(mParam1);
+        emailEditText.setText(mParam2);
+        passwordEditText.setText(mParam3);
+        passwordConfirmEditText.setText(mParam4);
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = signUp.edit();
+                if (checkBox.isChecked()) {
+                    editor.putString("username", usernameEditText.getText().toString());
+                    editor.putString("email", emailEditText.getText().toString());
+                    editor.putString("password", passwordEditText.getText().toString());
+                    editor.putString("passwordConfirm", passwordConfirmEditText.getText().toString());
+                    editor.putBoolean("isChecked", checkBox.isChecked());
+                    editor.commit();
+                } else {
+                    editor.putBoolean("isChecked", checkBox.isChecked());
+                    editor.commit();
+                }
+                fragmentInterface.showLogInFragment(usernameEditText.getText().toString(), passwordEditText.getText().toString(), passwordConfirmEditText.getText().toString());
+
+            }
+        });
+    }
+}
