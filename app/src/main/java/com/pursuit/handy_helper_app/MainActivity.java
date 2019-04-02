@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
 
     @Override
-    public void showLogInFragment(String string1, String string2, String string3) {
+    public void showLogInFragment() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, LogInFragment.newInstance(LogInFragment.getArgParamUsername(), LogInFragment.getArgParamPassword(), LogInFragment.getArgParamPasswordConfirm()))
                 .addToBackStack(null).commit();

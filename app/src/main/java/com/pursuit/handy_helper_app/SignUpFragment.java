@@ -20,7 +20,7 @@ public class SignUpFragment extends Fragment {
     private EditText emailEditText;
     private EditText passwordEditText;
     private EditText passwordConfirmEditText;
-    private CheckBox checkBox;
+    private Button signUpButton;
     private SharedPreferences signUp;
     private static FragmentInterface fragmentInterface;
     // TODO: Rename parameter arguments, choose names that match
@@ -42,12 +42,11 @@ public class SignUpFragment extends Fragment {
 
 
         signUp = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
-        if (signUp.getBoolean("isChecked", false)) {
+        if (signUp.getBoolean("isClicked", false)) {
             usernameEditText.setText(signUp.getString("username", null));
             emailEditText.setText(signUp.getString("email", null));
             passwordEditText.setText(signUp.getString("password", null));
             passwordConfirmEditText.setText(signUp.getString("passwordConfirm", null));
-            checkBox.setChecked(signUp.getBoolean("isChecked", false));
         }
 
 
@@ -104,8 +103,7 @@ public class SignUpFragment extends Fragment {
         emailEditText = view.findViewById(R.id.editText_email);
         passwordEditText = view.findViewById(R.id.editText_password);
         passwordConfirmEditText = view.findViewById(R.id.editText_password_confirm);
-        checkBox = view.findViewById(R.id.remember_me_checkbox);
-        Button signUpButton = view.findViewById(R.id.sign_up_button);
+        signUpButton = view.findViewById(R.id.sign_up_button);
 
         usernameEditText.setText(mParam1);
         emailEditText.setText(mParam2);
@@ -116,20 +114,28 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = signUp.edit();
-                if (checkBox.isChecked()) {
+                if (usernameEditText.getText() != null && emailEditText.getText() != null && passwordEditText.getText() != null && passwordConfirmEditText.getText() != null) {
                     editor.putString("username", usernameEditText.getText().toString());
                     editor.putString("email", emailEditText.getText().toString());
                     editor.putString("password", passwordEditText.getText().toString());
-                    editor.putString("passwordConfirm", passwordConfirmEditText.getText().toString());
-                    editor.putBoolean("isChecked", checkBox.isChecked());
-                    editor.commit();
-                } else {
-                    editor.putBoolean("isChecked", checkBox.isChecked());
+                    editor.putString("confirm", passwordConfirmEditText.getText().toString());
                     editor.commit();
                 }
-                fragmentInterface.showLogInFragment(usernameEditText.getText().toString(), passwordEditText.getText().toString(), passwordConfirmEditText.getText().toString());
-
             }
+
+//            fragmentInterface.showLogInFragment();
+//
+//
         });
-    }
+//    }
+//
+//    @Override
+//    public void showLogInFragment() {
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fragment_container, LogInFragment.newInstance(LogInFragment.getArgParamUsername(), LogInFragment.getArgParamPassword(), LogInFragment.getArgParamPasswordConfirm()))
+//                .addToBackStack(null).commit();
+//
+//
+//    }
 }
+    }

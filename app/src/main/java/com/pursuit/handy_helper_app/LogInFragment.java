@@ -27,7 +27,7 @@ public class LogInFragment extends Fragment {
 
     private static final String ARG_PARAM_USERNAME = "username";
     private static final String ARG_PARAM_PASSWORD = "password";
-    private static final String ARG_PARAM_PASSWORD_CONFIRM = "confirmPassword";
+    private static final String ARG_PARAM_PASSWORD_CONFIRM = "confirm";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -40,7 +40,9 @@ public class LogInFragment extends Fragment {
 
         login = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
         if (login.getBoolean("isChecked", false)){
-            usernameTextView.getText(login.getString(ARG_PARAM_USERNAME, null));
+            usernameTextView.setText(login.getString("username", null));
+            passwordTextView.setText(login.getString("password", null));
+            passwordConfirmTextView.setText(login.getString("confirm", null));
         }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM_USERNAME);
@@ -80,7 +82,12 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_log_in, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_log_in, container, false);
+//        usernameTextView = rootView.findViewById()
+
+
+        return rootView;
     }
 
 }
