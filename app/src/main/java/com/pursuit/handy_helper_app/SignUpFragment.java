@@ -21,7 +21,6 @@ public class SignUpFragment extends Fragment {
     private EditText passwordEditText;
     private EditText passwordConfirmEditText;
     private CheckBox checkBox;
-    private Button signUpButton;
     private SharedPreferences signUp;
     private static FragmentInterface fragmentInterface;
     // TODO: Rename parameter arguments, choose names that match
@@ -43,7 +42,6 @@ public class SignUpFragment extends Fragment {
 
 
         signUp = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
-
         if (signUp.getBoolean("isChecked", false)) {
             usernameEditText.setText(signUp.getString("username", null));
             emailEditText.setText(signUp.getString("email", null));
@@ -60,15 +58,6 @@ public class SignUpFragment extends Fragment {
             mParam4 = getArguments().getString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM);
         }
     }
-
-    public String getmParam4() {
-        return mParam4;
-    }
-
-    public void setmParam4(String mParam4) {
-        this.mParam4 = mParam4;
-    }
-
     public SignUpFragment() {
 
     }
@@ -85,32 +74,9 @@ public class SignUpFragment extends Fragment {
         return ARG_PARAM_PASSWORD_CHOICE;
     }
 
-    public String getmParam1() {
-        return mParam1;
-    }
 
     public static String getArgParamPasswordChoiceConfirm() {
         return ARG_PARAM_PASSWORD_CHOICE_CONFIRM;
-    }
-
-    public void setmParam1(String mParam1) {
-        this.mParam1 = mParam1;
-    }
-
-    public String getmParam2() {
-        return mParam2;
-    }
-
-    public void setmParam2(String mParam2) {
-        this.mParam2 = mParam2;
-    }
-
-    public String getmParam3() {
-        return mParam3;
-    }
-
-    public void setmParam3(String mParam3) {
-        this.mParam3 = mParam3;
     }
 
     public static SignUpFragment newInstance(String username, String email, String password, String passwordConfirm, FragmentInterface fraginterface) {
@@ -128,7 +94,6 @@ public class SignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_up, container, false);
     }
 
@@ -140,7 +105,7 @@ public class SignUpFragment extends Fragment {
         passwordEditText = view.findViewById(R.id.editText_password);
         passwordConfirmEditText = view.findViewById(R.id.editText_password_confirm);
         checkBox = view.findViewById(R.id.remember_me_checkbox);
-        signUpButton = view.findViewById(R.id.sign_up_button);
+        Button signUpButton = view.findViewById(R.id.sign_up_button);
 
         usernameEditText.setText(mParam1);
         emailEditText.setText(mParam2);

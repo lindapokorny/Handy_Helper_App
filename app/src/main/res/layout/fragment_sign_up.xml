@@ -26,12 +26,14 @@
             android:gravity="center"
             android:textSize="24sp"
             android:fontFamily="sans-serif-condensed"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/editText_password"
             android:layout_width="100dp"
             android:layout_gravity="center"
+            android:hint="@string/password"
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:gravity="center"
@@ -43,10 +45,16 @@
             android:layout_width="100dp"
             android:layout_gravity="center"
             android:gravity="center"
+            android:hint="@string/confirm_password"
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/remember_me_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/sign_up_button"
         android:layout_width="100dp"
@@ -55,6 +63,7 @@
         android:textSize="24sp"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"/>
+
 
 
 </LinearLayout>

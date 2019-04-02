@@ -4,9 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JobDataBase extends SQLiteOpenHelper {
     private static JobDataBase jobDataBaseInstance;
@@ -32,7 +33,7 @@ public class JobDataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "address TEXT, date TEXT);");
+                + "address TEXT, date TEXT, note TEXT);");
     }
 
     @Override
@@ -44,7 +45,30 @@ public class JobDataBase extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE address =" +
                 job.getAddress() + " AND message =" + job.getDate() + ";", null);
         if (cursor.getCount() == 0) {
+            getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME +
+                    "(address, date, note VALUES('" +
+                    job.getAddress() +
+                    job.getDate() +
+                    job.getNote() + "','");
         }
+        cursor.close();
+    }
+    public List<Job> getJobList(){
+        List<Job> jobList = new ArrayList<>();
+        Job job = null;
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + TABLE_NAME + ";", null);
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                do {
+                    job = new Job(
+                            cursor.getString(cursor.getColumnIndex("date")),
+                            cursor.getString(cursor.getColumnIndex("address")),
+                            cursor.getString(cursor.getColumnIndex("note")));
+                    jobList.add(job);
 
+                }while (cursor.moveToNext());
+            }
+        }
+        return jobList;
     }
 }

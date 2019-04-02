@@ -39,6 +39,9 @@ public class LogInFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         login = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
+        if (login.getBoolean("isChecked", false)){
+            usernameTextView.getText(login.getString(ARG_PARAM_USERNAME, null));
+        }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM_USERNAME);
             mParam2 = getArguments().getString(ARG_PARAM_PASSWORD);
@@ -61,31 +64,6 @@ public class LogInFragment extends Fragment {
 
     public static String getArgParamPasswordConfirm() {
         return ARG_PARAM_PASSWORD_CONFIRM;
-    }
-
-    public String getmParam1() {
-        return mParam1;
-    }
-
-    public void setmParam1(String mParam1) {
-        this.mParam1 = mParam1;
-    }
-
-    public String getmParam2() {
-        return mParam2;
-    }
-
-    public void setmParam2(String mParam2) {
-        this.mParam2 = mParam2;
-    }
-    // TODO: Rename and change types and number of parameters
-
-    public String getmParam3() {
-        return mParam3;
-    }
-
-    public void setmParam3(String mParam3) {
-        this.mParam3 = mParam3;
     }
 
     public static LogInFragment newInstance(String username, String password, String passwordConfirm) {

@@ -16,4 +16,5 @@
     <string name="remember_me_checkbox">Remember me</string>
     <string name="remember_me">Remember me</string>
     <string name="log_in">Log In</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
