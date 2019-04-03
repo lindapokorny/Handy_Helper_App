@@ -1,4 +1,4 @@
-package com.pursuit.handy_helper_app;
+package com.pursuit.handy_helper_app.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.pursuit.handy_helper_app.FragmentInterface;
+import com.pursuit.handy_helper_app.R;
 
 
 public class SignUpFragment extends Fragment {
@@ -85,11 +87,14 @@ public class SignUpFragment extends Fragment {
         args.putString(ARG_PARAM_EMAIL_INPUT, email);
         args.putString(ARG_PARAM_PASSWORD_CHOICE, password);
         args.putString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM, passwordConfirm);
-        fragmentInterface = fraginterface;
         fragment.setArguments(args);
         return fragment;
     }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        fragmentInterface = (FragmentInterface) context;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,9 +126,9 @@ public class SignUpFragment extends Fragment {
                     editor.putString("confirm", passwordConfirmEditText.getText().toString());
                     editor.commit();
                 }
+                fragmentInterface.showLogInFragment();
             }
 
-//            fragmentInterface.showLogInFragment();
 //
 //
         });

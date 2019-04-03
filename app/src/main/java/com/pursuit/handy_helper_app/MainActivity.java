@@ -3,6 +3,10 @@ package com.pursuit.handy_helper_app;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.pursuit.handy_helper_app.Fragments.LogInFragment;
+import com.pursuit.handy_helper_app.Fragments.RecyclerviewFragment;
+import com.pursuit.handy_helper_app.Fragments.SignUpFragment;
+
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
 
     @Override
@@ -23,4 +27,10 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
                 .addToBackStack(null).commit();
 
     }
+    public void showJobsListFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, RecyclerviewFragment.newInstance())
+                .addToBackStack(null).commit();
+    }
+    //showJobsList(){}
 }
