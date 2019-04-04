@@ -102,12 +102,13 @@ public class LogInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentInterface.showLogInFragment();
+        fragmentInterface.showJobsListFragment();
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         fragmentInterface = (FragmentInterface) context;
+
     }
 }
