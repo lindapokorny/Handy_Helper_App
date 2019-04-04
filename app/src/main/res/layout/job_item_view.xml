@@ -9,16 +9,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-</android.support.v7.widget.RecyclerView>
     <TextView
         android:id="@+id/date_textView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="20sp"
         tools:text="Date"
-        android:layout_gravity="top"
-        />
+        android:layout_gravity="top" />
 
     <TextView
         android:id="@+id/address_textView"
@@ -35,6 +32,7 @@
         tools:text="Notes"
         android:textSize="20sp"
         android:layout_gravity="bottom" />
+</android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/delete_job"
@@ -53,6 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="@string/add_job"/>
+        android:text="@string/add_job2"/>
 
 </LinearLayout>

@@ -21,11 +21,12 @@
     <string name="date">date</string>
     <string name="address">address</string>
     <string name="notes">notes</string>
-    <string name="add_job">Add Job</string>
     <string name="view_jobs">View Jobs</string>
     <string name="delete_job">Delete Job</string>
     <string name="edit_job">Edit Job</string>
     <string name="add_job">Add Job</string>
+    <string name="add_job2">Add Job</string>
+    <string name="save_job">Save Job</string>
     <string-array name="options_array">
         <item>Sign Up</item>
         <item>Log In</item>

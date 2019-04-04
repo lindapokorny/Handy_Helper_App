@@ -1,6 +1,6 @@
 package com.pursuit.handy_helper_app;
 
-class Job {
+public class Job {
 
     private String address;
     private String date;

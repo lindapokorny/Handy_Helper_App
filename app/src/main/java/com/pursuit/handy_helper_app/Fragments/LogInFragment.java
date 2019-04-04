@@ -4,6 +4,8 @@ package com.pursuit.handy_helper_app.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,17 +60,11 @@ public class LogInFragment extends Fragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        fragmentInterface = (FragmentInterface) context;
-    }
 //onAttach logic here - give it context ; pretty much same logic for SignUPFragment - after log in, will be the recyclerView
     //TODAY AND TOMORROW
     public static String getArgParamUsername() {
         return ARG_PARAM_USERNAME;
     }
-
     public static String getArgParamPassword() {
         return ARG_PARAM_PASSWORD;
     }
@@ -103,4 +99,15 @@ public class LogInFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        fragmentInterface.showLogInFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        fragmentInterface = (FragmentInterface) context;
+    }
 }
