@@ -42,7 +42,6 @@ public class SignUpFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         signUp = getContext().getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
         if (signUp.getBoolean("isClicked", false)) {
             usernameEditText.setText(signUp.getString("username", null));
@@ -59,6 +58,7 @@ public class SignUpFragment extends Fragment {
             mParam4 = getArguments().getString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM);
         }
     }
+
     public SignUpFragment() {
 
     }
@@ -90,11 +90,13 @@ public class SignUpFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         fragmentInterface = (FragmentInterface) context;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -132,15 +134,5 @@ public class SignUpFragment extends Fragment {
 //
 //
         });
-//    }
-//
-//    @Override
-//    public void showLogInFragment() {
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.fragment_container, LogInFragment.newInstance(LogInFragment.getArgParamUsername(), LogInFragment.getArgParamPassword(), LogInFragment.getArgParamPasswordConfirm()))
-//                .addToBackStack(null).commit();
-//
-//
-//    }
-}
     }
+}
