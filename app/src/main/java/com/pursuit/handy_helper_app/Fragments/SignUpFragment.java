@@ -25,14 +25,11 @@ public class SignUpFragment extends Fragment {
     private Button signUpButton;
     private SharedPreferences signUp;
     private static FragmentInterface fragmentInterface;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_USER_CHOICE = "username";
     private static final String ARG_PARAM_EMAIL_INPUT = "email";
     private static final String ARG_PARAM_PASSWORD_CHOICE = "password";
     private static final String ARG_PARAM_PASSWORD_CHOICE_CONFIRM = "passwordConfirm";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private String mParam3;
@@ -49,8 +46,6 @@ public class SignUpFragment extends Fragment {
             passwordEditText.setText(signUp.getString("password", null));
             passwordConfirmEditText.setText(signUp.getString("passwordConfirm", null));
         }
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM_USER_CHOICE);
             mParam2 = getArguments().getString(ARG_PARAM_EMAIL_INPUT);
@@ -58,9 +53,7 @@ public class SignUpFragment extends Fragment {
             mParam4 = getArguments().getString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM);
         }
     }
-
     public SignUpFragment() {
-
     }
 
     public static String getArgParamUserChoice() {
@@ -75,7 +68,6 @@ public class SignUpFragment extends Fragment {
         return ARG_PARAM_PASSWORD_CHOICE;
     }
 
-
     public static String getArgParamPasswordChoiceConfirm() {
         return ARG_PARAM_PASSWORD_CHOICE_CONFIRM;
     }
@@ -89,6 +81,9 @@ public class SignUpFragment extends Fragment {
         args.putString(ARG_PARAM_PASSWORD_CHOICE_CONFIRM, passwordConfirm);
         fragment.setArguments(args);
         return fragment;
+    }
+    public static SignUpFragment newInstance2(){
+        return new SignUpFragment();
     }
 
     @Override

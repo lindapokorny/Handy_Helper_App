@@ -27,6 +27,7 @@
     <string name="add_job">Add Job</string>
     <string name="add_job2">Add Job</string>
     <string name="save_job">Save Job</string>
+    <string name="sign_up_now">Don\'t have an account? Sign up now!</string>
     <string-array name="options_array">
         <item>Sign Up</item>
         <item>Log In</item>

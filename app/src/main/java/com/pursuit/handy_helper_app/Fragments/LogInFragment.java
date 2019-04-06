@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.pursuit.handy_helper_app.FragmentInterface;
 import com.pursuit.handy_helper_app.R;
@@ -24,8 +25,8 @@ public class LogInFragment extends Fragment {
     private EditText usernameTextView;
     private EditText passwordTextView;
     private EditText passwordConfirmTextView;
-    private CheckBox checkBox;
     private Button logInButton;
+    private TextView signUpNowTextView;
     private SharedPreferences login;
     private static FragmentInterface fragmentInterface;
 
@@ -59,9 +60,6 @@ public class LogInFragment extends Fragment {
     public LogInFragment() {
     }
 
-
-//onAttach logic here - give it context ; pretty much same logic for SignUPFragment - after log in, will be the recyclerView
-    //TODAY AND TOMORROW
     public static String getArgParamUsername() {
         return ARG_PARAM_USERNAME;
     }
@@ -86,14 +84,12 @@ public class LogInFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_log_in, container, false);
         usernameTextView = rootView.findViewById(R.id.username_input);
         passwordTextView = rootView.findViewById(R.id.password_input);
         passwordConfirmTextView = rootView.findViewById(R.id.password_input_confirm);
-        checkBox = rootView.findViewById(R.id.remember_me_checkbox);
         logInButton = rootView.findViewById(R.id.log_in_button);
+        signUpNowTextView = rootView.findViewById(R.id.sign_up_now);
 
 
         return rootView;
@@ -106,15 +102,20 @@ public class LogInFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentInterface.showJobsListFragment();
-
             }
         });
     }
+        /*signUpNowTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  fragmentInterface.showSignUpFragment();
+            }
+        });*/
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         fragmentInterface = (FragmentInterface) context;
-
     }
 }

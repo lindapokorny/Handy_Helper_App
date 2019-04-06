@@ -2,12 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/recylerview_viewHolder"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview_itemView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/date_textView"
@@ -32,7 +29,6 @@
         tools:text="Notes"
         android:textSize="20sp"
         android:layout_gravity="bottom" />
-</android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>
