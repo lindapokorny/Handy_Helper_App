@@ -26,6 +26,10 @@ import com.pursuit.handy_helper_app.recyclerviewComponenets.JobViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.pursuit.handy_helper_app.Fragments.DetailFragment.ARG_PARAM_ADDRESS;
+import static com.pursuit.handy_helper_app.Fragments.DetailFragment.ARG_PARAM_DATE;
+import static com.pursuit.handy_helper_app.Fragments.DetailFragment.ARG_PARAM_NOTES;
+
 
 public class JobsListFragment extends Fragment implements FragmentInterface {
     RecyclerView recyclerView;
@@ -34,6 +38,7 @@ public class JobsListFragment extends Fragment implements FragmentInterface {
     List<Job> jobList;
     JobDataBaseHelper jobDataBaseHelper;
     JobListAdapter jobListAdapter;
+
 
     @Override
     public void onAttach(Context context) {
@@ -46,9 +51,21 @@ public class JobsListFragment extends Fragment implements FragmentInterface {
     public JobsListFragment() {
     }
 
-    public static JobsListFragment newInstance() {
-        JobsListFragment jobsListFragment = new JobsListFragment();
+    public static JobsListFragment newInstance(Job job) {
+    JobsListFragment jobsListFragment = new JobsListFragment();
+       Bundle args = new Bundle();
+        args.putString("date", job.getDate());
+        args.putString("address", job.getAddress());
+        args.putString("notes", job.getNote());
         return jobsListFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getArguments().putString(ARG_PARAM_DATE, "date");
+        getArguments().putString(ARG_PARAM_ADDRESS,"address");
+        getArguments().putString(ARG_PARAM_NOTES,"notes");
     }
 
     @Override
@@ -91,6 +108,16 @@ public class JobsListFragment extends Fragment implements FragmentInterface {
 
     @Override
     public void showNewFormList() {
+
+    }
+
+    @Override
+    public void showSignUpFragment() {
+
+    }
+
+    @Override
+    public void showDetailFragment() {
 
     }
 }

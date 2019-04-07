@@ -98,6 +98,12 @@ public class LogInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        signUpNowTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentInterface.showSignUpFragment();
+            }
+        });
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,12 +111,6 @@ public class LogInFragment extends Fragment {
             }
         });
     }
-        /*signUpNowTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              //  fragmentInterface.showSignUpFragment();
-            }
-        });*/
 
 
     @Override

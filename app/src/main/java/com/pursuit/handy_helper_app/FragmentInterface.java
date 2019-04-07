@@ -4,6 +4,7 @@ public interface FragmentInterface {
     void showLogInFragment();
     void showJobsListFragment();
     void showNewFormList();
-    // void showSignUpFragment();
+    void showSignUpFragment();
+    void showDetailFragment();
     //Display New Form Frag
 }

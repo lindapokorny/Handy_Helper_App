@@ -35,6 +35,50 @@ public class SignUpFragment extends Fragment {
     private String mParam3;
     private String mParam4;
 
+    public void setUsernameEditText(EditText usernameEditText) {
+        this.usernameEditText = usernameEditText;
+    }
+
+    public void setEmailEditText(EditText emailEditText) {
+        this.emailEditText = emailEditText;
+    }
+
+    public void setPasswordEditText(EditText passwordEditText) {
+        this.passwordEditText = passwordEditText;
+    }
+
+    public void setPasswordConfirmEditText(EditText passwordConfirmEditText) {
+        this.passwordConfirmEditText = passwordConfirmEditText;
+    }
+
+    public void setSignUpButton(Button signUpButton) {
+        this.signUpButton = signUpButton;
+    }
+
+    public void setSignUp(SharedPreferences signUp) {
+        this.signUp = signUp;
+    }
+
+    public static void setFragmentInterface(FragmentInterface fragmentInterface) {
+        SignUpFragment.fragmentInterface = fragmentInterface;
+    }
+
+    public void setmParam1(String mParam1) {
+        this.mParam1 = mParam1;
+    }
+
+    public void setmParam2(String mParam2) {
+        this.mParam2 = mParam2;
+    }
+
+    public void setmParam3(String mParam3) {
+        this.mParam3 = mParam3;
+    }
+
+    public void setmParam4(String mParam4) {
+        this.mParam4 = mParam4;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -93,4 +93,14 @@ public class NewJobFormFragment extends Fragment implements FragmentInterface {
     public void showNewFormList() {
 
     }
+
+    @Override
+    public void showSignUpFragment() {
+
+    }
+
+    @Override
+    public void showDetailFragment() {
+
+    }
 }
